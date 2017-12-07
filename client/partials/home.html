@@ -1,0 +1,76 @@
+<div id="wrapper" ng-controller="homeController">
+    <!-- Top Card - Input form panel -->
+    <div class="card ">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills float-xs-left">
+                <li class="nav-item">
+                    <a class="nav-link active" ng-click="eisView()">ReachNow Seattle</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="card-block ">
+            <h4 class="card-title">{{ pageHeader }}</h4>
+            <p class="card-text"> {{ supportingTextHeader }}</p>
+            <form class="form form-inline">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class=" form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">Parameters</span>
+                                <button class="form-control" type="file" ngf-select="uploadParameterFile($file, $invalidFiles)"
+                                        accept="text/*" ngf-max-size="1MB"  > {{ parameterState }}</button>
+                                <p>{{up.progress}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">Frequencies</span>
+
+                                <button class="form-control" type="file" ngf-select="uploadFrequencyFile($file, $invalidFiles)"
+                                        accept="text/*" ngf-max-size="1MB"  > {{ frequencyState }}</button>
+                                <p>{{up.progress}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success" ng-click="eis()">{{ actionText }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Graph Card -->
+    <div class="card card-block text-xs-center card-outline-primary " ng-show="graph.showGraphCard">
+        <div class="row"  >
+            <div class="col-lg-12">
+                <p class="alert-success">{{ resultStatus }}</p>
+                <div class="container" >
+                    <div class="row" id="row-top">
+                        <div class="col-lg-12" id="voltage">
+                            <canvas id="plot-eis"></canvas>
+                        </div>
+
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-3" >
+                            <button type="submit" class="btn btn-primary" ng-click="downloadData()">
+                                Download Solution
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

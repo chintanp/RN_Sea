@@ -1,0 +1,230 @@
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BII</a>
+            <div>
+
+            </div>
+        </div>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse" ng-controller="logoutController">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> BII BMS Demo</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sliders fa-fw"></i> Parameters </a>
+
+                    </li>
+                    <li>
+                        <a ng-click='logout()' class="btn btn-default">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">BII BMS Demo</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <form class="form">
+
+            <div class="row">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default col-lg-4">Left</button>
+                    <button type="button" class="btn btn-default col-lg-4">Middle</button>
+                    <button type="button" class="btn btn-default col-lg-4">Right</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-plug fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6 ">
+
+                                    <label>Current (C-rate)</label>
+                                    <input type="text" class="form-control" placeholder="Current" aria-describedby="basic-addon1" name="current" ng-model="simulation.current">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-clock-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6 ">
+                                    <label>Time (secs)</label>
+                                    <input type="text" class="form-control" placeholder="Time" aria-describedby="basic-addon1" name="time" ng-model="simulation.time">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-battery-empty fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label>Start SoC (%) </label>
+                                    <input type="text" class="form-control" placeholder="Start SoC" aria-describedby="basic-addon1" name="startsoc" ng-model="simulation.startsoc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-battery-full fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6 ">
+                                    <label>End SoC (%)</label>
+                                    <input type="text" class="form-control" placeholder="End SoC" aria-describedby="basic-addon1" name="endsoc" ng-model="simulation.endsoc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row" ng-controller="homeController">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-automobile fa-fw"></i> Choose action
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" type="submit" data-toggle="dropdown">
+                                        Select
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a ng-click="charge(simulation.current, simulation.time)">Charge</a>
+                                        </li>
+                                        <li>
+                                            <a ng-click="discharge(simulation.current, simulation.time)">Discharge</a>
+                                        </li>
+                                        <li>
+                                            <a disabled hidden>Cycle</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!--<div id="morris-area-chart"></div>-->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Graph {{resultStatus}}
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Select
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a ng-click="voltageGraph()">Voltage-time</a>
+                                        </li>
+                                        <li>
+                                            <a ng-click="socGraph()">SoC-time</a>
+                                        </li>
+                                        <li>
+                                            <a ng-click="capacityGraph()">Capacity-cycle</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            {{resultStatus}}
+
+                            <div id="morris-area-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Dials
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Select
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#">SoC</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">SoH</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Cost</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </form>
+
+
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->

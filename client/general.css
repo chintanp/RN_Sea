@@ -1,0 +1,15 @@
+#row-top ,
+#row-bottom {
+    height: 50vh;
+}
+
+#voltage
+{
+    height: 50vh;
+}
+
+canvas#plot-eis {
+    height: 50vh;
+}
+
+
