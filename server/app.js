@@ -12,7 +12,7 @@ var localStrategy = require('passport-local').Strategy;
 var exec = require('child_process').execFile;
 
 // mongoose
-mongoose.connect('mongodb://172.17.0.1/RNSeaDB');
+mongoose.connect('mongodb://172.17.0.1/RNSeaDB');  //**** Enter the IP address of the DB server and the name of database here ****//
 
 // user schema/model
 var User = require('./models/user.js');

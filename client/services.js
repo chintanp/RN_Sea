@@ -1,3 +1,4 @@
+// Service for taking care of authorization
 angular.module('myApp').factory('AuthService',
   ['$q', '$timeout', '$http',
   function ($q, $timeout, $http) {
