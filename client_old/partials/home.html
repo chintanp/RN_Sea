@@ -1,0 +1,9 @@
+<div id="map_container" ng-controller="homeController as vm">
+
+    <ng-map id="map_canvas" center="[{{vm.centerlat}}, {{vm.centerlong}}]" zoom=13 default-style="false">
+
+        <kml-layer url="./data/Google_Maps_data-1130193241.kml"></kml-layer>
+        <shape name="polyline" id="foo" path="{{vm.tripPath}}" stroke-color="#FF0000" stroke-opacity="1.0" stroke-weight="3">
+        </shape>
+    </ng-map>
+</div>

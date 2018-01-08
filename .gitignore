@@ -33,7 +33,7 @@ data
 data/db
 typings
 server/Ipopt-exe-demo
-
+db
 
 # Optional npm cache directory
 .npm
@@ -51,3 +51,6 @@ bin
 obj
 *.sln
 *.bat
+
+# All exes
+*.exe

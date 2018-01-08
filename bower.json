@@ -1,0 +1,24 @@
+{
+  "name": "RN_Sea_MapApp",
+  "description": "RN_Sea Data on Google Maps",
+  "main": "server.js",
+  "authors": [
+    "Chintan Pathak"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/chintanp/RN_Sea",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "1.4.6",
+    "modernizr": "~3.5.0",
+    "bootstrap": "~4.0.0-alpha.6",
+    "angularjs-geolocation": "~0.1.1"
+  }
+}

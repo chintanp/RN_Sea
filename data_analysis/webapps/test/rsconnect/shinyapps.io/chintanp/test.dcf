@@ -1,0 +1,12 @@
+name: test
+title: test
+username:
+account: chintanp
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 251009
+bundleId: 1146793
+url: https://chintanp.shinyapps.io/test/
+when: 1513887745.0851
+asMultiple: FALSE
+asStatic: FALSE
